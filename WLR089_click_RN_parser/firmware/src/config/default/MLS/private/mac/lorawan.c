@@ -265,7 +265,7 @@ StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
     loRa.fCntUp.value = 0;
     loRa.devNonce = MAC_DEVNONCE;
     loRa.joinNonce = MAC_JOINNONCE;
-    loRa.joinNonceType = JOIN_NONCE_INCREMENTAL;
+    loRa.joinNonceType = LWversion; //loRa.joinNonceType = JOIN_NONCE_INCREMENTAL;
     loRa.aggregatedDutyCycle = MAC_AGGREGATED_DUTYCYCLE;
     loRa.adrAckCnt = 0;
     loRa.counterAdrAckDelay = 0;
@@ -352,9 +352,10 @@ StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
     loRa.protocolParameters.retransmitTimeout = RETRANSMIT_TIMEOUT;
     loRa.protocolParameters.adrAckDelay = ADR_ACK_DELAY;
     loRa.protocolParameters.adrAckLimit = ADR_ACK_LIMIT;
-    LorawanLinkCheckConfigure (DISABLED); // disable the link check mechanism
+      LorawanLinkCheckConfigure (DISABLED); // disable the link check mechanism
     LorawanMcastInit();
-
+    
+    LORAWAN_SetAttr(TEST_MODE_ENABLE, true);
     return status;
 }
 

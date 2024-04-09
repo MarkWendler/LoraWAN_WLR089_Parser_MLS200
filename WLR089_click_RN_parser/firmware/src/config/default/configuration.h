@@ -109,6 +109,12 @@ extern "C" {
 #define WOLF_CRYPTO_CB  // provide call-back support
 #define WOLFCRYPT_ONLY
 #define WOLFSSL_HAVE_MCHP_HW_CRYPTO
+    
+#define LW102   JOIN_NONCE_RANDOM
+#define LW104   JOIN_NONCE_INCREMENTAL    
+ 
+#define LWversion      LW104
+    
 // ---------- CRYPTO HARDWARE MANIFEST START ----------
 #define WOLFSSL_HAVE_MCHP_HW_CRYPTO_AES_HW_U2238
 #define WOLFSSL_HAVE_MCHP_HW_CRYPTO_TRNG_HW_U2242
