@@ -354,7 +354,7 @@ void Parser_LoraGetCrtDataRate(parserCmdInfo_t* pParserCmdInfo)
 
 	LORAWAN_GetAttr(CURRENT_DATARATE, NULL, &crtDatarate);
 
-	itoa(crtDatarate, aParserData, 10U);
+	sprintf(aParserData,"%d",crtDatarate);//itoa(crtDatarate, aParserData, 10U);
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
 
@@ -748,11 +748,11 @@ void Parser_LoraGetDatarateRange(parserCmdInfo_t* pParserCmdInfo)
 			minDr = drRange & 0x0F;
 			maxDr = (drRange >> 4) & 0x0F;
 
-			itoa(minDr, aParserData, 10U);
+			sprintf(aParserData,"%d",minDr); //itoa(minDr, aParserData, 10U);
 			crtIdx = strlen(aParserData);
 			aParserData[crtIdx] = ' ';
 			crtIdx++;
-			itoa(maxDr, &aParserData[crtIdx], 10U);
+			sprintf(&aParserData[crtIdx],"%d",maxDr); //itoa(maxDr, &aParserData[crtIdx], 10U);
 			pParserCmdInfo->pReplyCmd = aParserData;
 		}
 	}
@@ -779,7 +779,7 @@ void Parser_LoraGetTxPower(parserCmdInfo_t* pParserCmdInfo)
 
 	LORAWAN_GetAttr(TX_POWER, NULL, &txPowerIdx);
 
-	itoa(txPowerIdx, aParserData, 10);
+	sprintf(aParserData,"%d",txPowerIdx); //itoa(txPowerIdx, aParserData, 10);
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
 
@@ -866,7 +866,7 @@ void Parser_LoraGetLbt(parserCmdInfo_t* pParserCmdInfo)
 		ultoa(aParserData, lorawanLBTParams.lbtScanPeriod, 10U);
 		dataLen = strlen(aParserData);
 		aParserData[dataLen++] = ' ';
-		itoa(lorawanLBTParams.lbtThreshold, &aParserData[dataLen], 10U);
+		sprintf(&aParserData[dataLen],"%d",lorawanLBTParams.lbtThreshold); //itoa(lorawanLBTParams.lbtThreshold, &aParserData[dataLen], 10U);
 		dataLen = strlen(aParserData);
 		aParserData[dataLen++] = ' ';
 		ultoa(&aParserData[dataLen], lorawanLBTParams.maxRetryChannels, 10U);
@@ -968,7 +968,7 @@ void Parser_LoraGetAggregatedDutyCycle(parserCmdInfo_t* pParserCmdInfo)
 	uint16_t aggregatedDutyCycle;
 
 	LORAWAN_GetAttr(AGGREGATED_DUTYCYCLE, NULL, &aggregatedDutyCycle);
-	utoa(aggregatedDutyCycle, aParserData, 10);
+	sprintf(aParserData, "%d", aggregatedDutyCycle);    //utoa(aggregatedDutyCycle, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1057,7 +1057,7 @@ void Parser_LoraGetReTxNb(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t reTxNb;
 
 	LORAWAN_GetAttr(CNF_RETRANSMISSION_NUM, NULL, &reTxNb);
-	utoa(reTxNb, aParserData, 10);
+	sprintf(aParserData, "%d", reTxNb); //utoa(reTxNb, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1067,7 +1067,7 @@ void Parser_LoraGetRepsNb(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t reTxNb;
 
 	LORAWAN_GetAttr(UNCNF_REPETITION_NUM, NULL, &reTxNb);
-	utoa(reTxNb, aParserData, 10);
+	sprintf(aParserData, "%d", reTxNb); //utoa(reTxNb, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1077,7 +1077,7 @@ void Parser_LoraGetLinkCheckMargin(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t mrgn;
 
 	LORAWAN_GetAttr(LINK_CHECK_MARGIN, NULL, &mrgn);
-	utoa(mrgn, aParserData, 10);
+	sprintf(aParserData, "%d", mrgn); //utoa(mrgn, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1087,7 +1087,7 @@ void Parser_LoraGetLinkCheckGwCnt(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t gwCnt;
 
 	LORAWAN_GetAttr(LINK_CHECK_GWCNT, NULL, &gwCnt);
-	utoa(gwCnt, aParserData, 10);
+	sprintf(aParserData, "%d", gwCnt); //utoa(gwCnt, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1130,7 +1130,7 @@ void Parser_LoraGetRxDelay1(parserCmdInfo_t* pParserCmdInfo)
 	uint16_t rxDelay1;
 
 	LORAWAN_GetAttr(RX_DELAY1, NULL, &rxDelay1);
-	utoa(rxDelay1, aParserData, 10);
+	sprintf(aParserData, "%d", rxDelay1); //utoa(rxDelay1, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1140,7 +1140,7 @@ void Parser_LoraGetRxDelay2(parserCmdInfo_t* pParserCmdInfo)
 	uint16_t rxDelay2;
 
 	LORAWAN_GetAttr(RX_DELAY2, NULL, &rxDelay2);
-	utoa(rxDelay2, aParserData, 10);
+	sprintf(aParserData, "%d", rxDelay2); //utoa(rxDelay2, aParserData, 10);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1213,7 +1213,7 @@ void Parser_LoraGetJoinNonceType(parserCmdInfo_t* pParserCmdInfo)
 {
 	JoinNonceType_t jntype;
 	LORAWAN_GetAttr(JOIN_NONCE_TYPE, NULL, &jntype);
-	utoa(jntype, aParserData, 10);
+	sprintf(aParserData, "%d", jntype); //utoa(jntype, aParserData, 10);
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
 
@@ -1409,7 +1409,7 @@ void Parser_LoraGetMcastDr(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t groupId = atoi(pParserCmdInfo->pParam1);
 	status = LORAWAN_GetAttr(MCAST_DATARATE, &groupId, &dr);
 	if (status == LORAWAN_SUCCESS) {
-		itoa(dr, aParserData, 10U);
+		sprintf(aParserData,"%d",dr);  //itoa(dr, aParserData, 10U);
 		pParserCmdInfo->pReplyCmd = aParserData;
 	} else {
 		pParserCmdInfo->pReplyCmd = (char*) gapParserLorawanStatus[status];
@@ -1435,7 +1435,7 @@ static void ParserAppData(void *appHandle, appCbParams_t *data)
 				dataLen = strlen(aParserData);
 
 				//Handle port: the first byte from pData represents the port number
-				itoa(*pData, &aParserData[dataLen], 10);
+				sprintf(&aParserData[dataLen],"%d",*pData);   //itoa(*pData, &aParserData[dataLen], 10);
 				dataLen = strlen(aParserData);
 
 				aParserData[dataLen] = ' ';
@@ -1676,7 +1676,7 @@ void Parser_LoraGetMacLastPacketRssi(parserCmdInfo_t* pParserCmdInfo)
 	int16_t rssi;
 
 	LORAWAN_GetAttr(LAST_PACKET_RSSI, NULL, &rssi);
-	itoa(rssi, aParserData, 10U);
+	sprintf(aParserData,"%d",rssi); //itoa(rssi, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1703,7 +1703,7 @@ void Parser_LoraGetMacLastChId(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t id;
 
 	LORAWAN_GetAttr(LAST_CH_ID, NULL, &id);
-	utoa(id, aParserData, 10U);
+	sprintf(aParserData, "%d", id); //utoa(id, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1713,7 +1713,7 @@ void Parser_LoraGetMacPendingDutyCycle(parserCmdInfo_t* pParserCmdInfo)
 	uint32_t value;
 
 	LORAWAN_GetAttr(PENDING_DUTY_CYCLE_TIME, NULL, &value);
-	utoa(value, aParserData, 10U);
+	sprintf(aParserData, "%d", value);  //utoa(value, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1723,7 +1723,7 @@ void Parser_LoraGetMacCnfRetryCnt(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t ctr;
 
 	LORAWAN_GetAttr(RETRY_COUNTER_CNF, NULL, &ctr);
-	utoa(ctr, aParserData, 10U);
+	sprintf(aParserData, "%d", ctr);  //utoa(ctr, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1733,7 +1733,7 @@ void Parser_LoraGetMacUncnfRetryCnt(parserCmdInfo_t* pParserCmdInfo)
 	uint8_t ctr;
 
 	LORAWAN_GetAttr(RETRY_COUNTER_UNCNF, NULL, &ctr);
-	utoa(ctr, aParserData, 10U);
+	sprintf(aParserData, "%d", ctr); //utoa(ctr, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1743,7 +1743,7 @@ void Parser_LoraGetMacNextPayloadSize(parserCmdInfo_t* pParserCmdInfo)
 	uint16_t size;
 
 	LORAWAN_GetAttr(NEXT_PAYLOAD_SIZE, NULL, &size);
-	utoa(size, aParserData, 10U);
+	sprintf(aParserData, "%d", size); //utoa(size, aParserData, 10U);
 
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
@@ -1752,7 +1752,7 @@ void Parser_LoraGetJoindutycycleremaining(parserCmdInfo_t* pParserCmdInfo)
 {
 	uint32_t remainingtime;
 	LORAWAN_GetAttr(PENDING_JOIN_DUTY_CYCLE_TIME, NULL, &remainingtime);
-	utoa(remainingtime, aParserData, 10U);
+	sprintf(aParserData, "%d", remainingtime); //utoa(remainingtime, aParserData, 10U);
 	pParserCmdInfo->pReplyCmd = aParserData;
 }
 

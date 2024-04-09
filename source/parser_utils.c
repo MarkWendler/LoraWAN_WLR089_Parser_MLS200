@@ -106,7 +106,7 @@ void Parser_IntArrayToHexAscii(uint8_t arrayLen, uint8_t* pInArray, char* pOutHe
 	uint8_t iCtr = 0U;
 
 	for (iCtr = 0; iCtr < arrayLen; iCtr++) {
-		itoa(pInArray[iCtr], (char *) &pOutHexAscii[iCtr << 1], 16);
+		sprintf((char *) &pOutHexAscii[iCtr << 1], "%X", pInArray[iCtr]); //itoa(pInArray[iCtr], (char *) &pOutHexAscii[iCtr << 1], 16);
 
 		if (pInArray[iCtr] <= 15) {
 			/* Special treatment for figures [0..9]  */
