@@ -846,7 +846,7 @@ typedef enum _pds_reg_ind_items
 #endif
 
 #if (ENABLE_PDS == 1)
-typedef struct __packed _RegPdsItems
+typedef struct __attribute__((packed)) _RegPdsItems
 {
     uint8_t  fileid;
     uint16_t lastUsedSB;
@@ -856,7 +856,7 @@ typedef struct __packed _RegPdsItems
 }RegPdsItems_t;
 #endif
 /*This Structure stores dutycycle timer related information*/
-typedef struct __packed _DutyCycleTimer
+typedef struct __attribute__((packed)) _DutyCycleTimer
 {
     /* Duty cycle timers last value */
     uint32_t lastTimerValue;
@@ -864,7 +864,7 @@ typedef struct __packed _DutyCycleTimer
     uint8_t timerId;
 }    DutyCycleTimer_t;
 /*This Structure stores Joinreq dutycycle timer related information*/
-typedef struct __packed _JoinDutyCycleTimer
+typedef struct __attribute__((packed)) _JoinDutyCycleTimer
 {
 	/* Duty cycle timers last value */
 	uint32_t lastTimerInterval;
@@ -875,21 +875,21 @@ typedef struct __packed _JoinDutyCycleTimer
 	
 }    JoinDutyCycleTimer_t;
 /*This Structure stores Joinreq backoff timer related information*/
-typedef struct __packed _JoinBackoffTimer
+typedef struct __attribute__((packed)) _JoinBackoffTimer
 {
 	/* The unique Id given to the timer */
 	uint8_t timerId;
 }    JoinBackoffTimer_t;
 
 /*This Structure stores LBT timer related information*/
-typedef struct __packed _LBTTimer
+typedef struct __attribute__((packed)) _LBTTimer
 {
     uint32_t lastTimerValue;
     uint8_t timerId;
 }    LBTTimer_t;
 
 /* Stores Sub-Band specific Parameters */
-typedef struct __packed _SubBandParams
+typedef struct __attribute__((packed)) _SubBandParams
 {
     /*Start of Frequency Range of the Subband*/
     uint32_t freqMin;
@@ -899,7 +899,7 @@ typedef struct __packed _SubBandParams
     uint32_t subBandTimeout;
 }SubBandParams_t;
 
-typedef struct __packed _channelParams
+typedef struct __attribute__((packed)) _channelParams
 {
     /* Indicates if the channel is enabled or disabled */
     bool status;
@@ -908,7 +908,7 @@ typedef struct __packed _channelParams
 }ChannelParams_t;
 
 /* Stores Channel related parameters*/
-typedef struct __packed _OthChannelParams
+typedef struct __attribute__((packed)) _OthChannelParams
 {
     /* The uplink frequency in Hz configured for this channel */
     uint32_t ulfrequency;
@@ -928,7 +928,7 @@ typedef struct __packed _OthChannelParams
 } OthChannelParams_t;
 
 /** Regional parameters which are controlled by Data Rate */
-typedef struct __packed _DRParams
+typedef struct __attribute__((packed)) _DRParams
 {
     uint16_t rxWindowSize;
     /* Maximum payload size when downlink Dwell time is zero - Dwell time 0 means no restriction on dwell time */
@@ -941,7 +941,7 @@ typedef struct __packed _DRParams
     RadioModulation_t modulation;
 } DRParams_t;
 
-typedef struct __packed _RegParamsType1
+typedef struct __attribute__((packed)) _RegParamsType1
 {
     DRParams_t DRParams[MAX_DRPARAMS_T1];
     ChannelParams_t chParams[MAX_CHANNELS_T1];
@@ -962,7 +962,7 @@ typedef struct __packed _RegParamsType1
 	DutyCycleTimer_t DutyCycleTimer;
 }RegParamsType1_t;
 
-typedef struct __packed _RegParamsType2
+typedef struct __attribute__((packed)) _RegParamsType2
 {
     DRParams_t DRParams[MAX_DRPARAMS_T2];
     ChannelParams_t chParams[MAX_CHANNELS_T2];
@@ -982,7 +982,7 @@ typedef struct __packed _RegParamsType2
     SubBandParams_t SubBands[MAX_NUM_SUBBANDS];
 }RegParamsType2_t;
 
-typedef union __packed _CmnParams
+typedef union __attribute__((packed)) _CmnParams
 {
     RegParamsType1_t paramsType1;
     RegParamsType2_t paramsType2;
@@ -990,7 +990,7 @@ typedef union __packed _CmnParams
 
 
 /* All the parameters related to multiband region are stored using this structure*/
-typedef struct __packed _RegParams
+typedef struct __attribute__((packed)) _RegParams
 {
     DRParams_t *pDrParams;
     ChannelParams_t *pChParams;

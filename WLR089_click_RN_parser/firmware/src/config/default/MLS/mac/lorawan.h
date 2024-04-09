@@ -98,7 +98,7 @@ typedef enum _FeaturesSupported
 typedef union _DataRange
 {
     uint8_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
        uint8_t min:4;
        uint8_t max:4;
@@ -225,7 +225,7 @@ typedef struct _DevTime
 typedef union _StackVersion_t
 {
     uint32_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
         uint32_t reserved1 : 14;
         uint32_t iteration :  4;
@@ -629,7 +629,7 @@ typedef void (*AppDataCb_t)(void *appHandle, appCbParams_t *data);
 typedef void (*JoinResponseCb_t)(StackRetStatus_t status);
 
 /* Structure holding function pointers of Application and Activation data callbacks */
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
 	/* pointer to function that gets called after the bidirectional communication ended */
     void (*AppData)(void *appHandle, appCbParams_t *data);

@@ -119,7 +119,7 @@ extern "C" {
 typedef union
 {
     uint8_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
        uint8_t nbRep:4;
        uint8_t chMaskCntl:3;
@@ -195,7 +195,7 @@ typedef union
     }members;
 } GenericEui_t;
 
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
     ActivationType_t activationType;
     DeviceAddress_t deviceAddress;
@@ -211,7 +211,7 @@ typedef struct __packed
 typedef union
 {
     uint8_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
        uint8_t fOptsLen:4;
        uint8_t fPending:1;
@@ -225,7 +225,7 @@ typedef union
 typedef union
 {
     uint8_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
         uint8_t major           : 2;
         uint8_t rfu             : 3;
@@ -236,7 +236,7 @@ typedef union
 typedef union
 {
     uint8_t fHdrCounter[23];
-    struct __packed
+    struct __attribute__((packed))
     {
         Mhdr_t mhdr             ;
         DeviceAddress_t devAddr ;
@@ -249,7 +249,7 @@ typedef union
 typedef union
 {
     uint8_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
         uint8_t rx2DataRate     : 4;
         uint8_t rx1DROffset     : 3;
@@ -258,7 +258,7 @@ typedef union
 } DlSettings_t;
 
 //Protocol parameters
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
     uint16_t receiveDelay1     ;
     uint16_t receiveDelay2     ;
@@ -270,7 +270,7 @@ typedef struct __packed
     uint8_t adrAckDelay        ;
 } ProtocolParams_t;
 
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
 	
 	uint64_t firstJoinReqTimestamp;
@@ -279,7 +279,7 @@ typedef struct __packed
 	
 } JoinReqinfo_t;
 
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
    uint8_t receivedCid;
    unsigned channelMaskAck :1;           // used for link adr answer
@@ -293,7 +293,7 @@ typedef struct __packed
    unsigned uplinkFreqExistsAck :1;     // used for DL channel answer
 } LorawanCommands_t;
 
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
 	uint8_t channelMaskAck :1;
 	uint8_t dataRateAck	   :1;
@@ -310,7 +310,7 @@ typedef struct __packed
 typedef union
 {
     uint16_t value;
-    struct __packed
+    struct __attribute__((packed))
     {
        uint16_t deviceEui: 1;             //if set, device EUI was defined
        uint16_t joinEui:1;
@@ -321,7 +321,7 @@ typedef union
     };
 } LorawanMacKeys_t;
 
-typedef struct __packed
+typedef struct __attribute__((packed))
 {
     uint32_t frequency;
     uint8_t dataRate;
@@ -330,7 +330,7 @@ typedef struct __packed
 /* Holds the Multicast group bit mask for Keys and Device adddress */
 typedef union _LorawanMcastKeys {
 	uint8_t value;
-	struct __packed {
+	struct __attribute__((packed)) {
 	   uint8_t mcastDeviceAddress: 1;
 	   uint8_t mcastNetworkSessionKey: 1;
 	   uint8_t mcastApplicationSessionKey: 1;		
@@ -377,7 +377,7 @@ typedef struct _LorawanMcastParams_t
 typedef union _JoinAccept
 {
 	uint8_t joinAcceptCounter[29];
-    struct __packed
+    struct __attribute__((packed))
 	{
 		Mhdr_t mhdr;
 		uint8_t joinNonce[3];

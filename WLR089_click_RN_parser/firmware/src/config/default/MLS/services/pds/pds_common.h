@@ -58,7 +58,7 @@ typedef struct _PdsNvmHeader_t
 
 
 
-typedef struct __packed _PdsWlHeader_t
+typedef struct __attribute__((packed)) _PdsWlHeader_t
 {
 	uint8_t magicNo;
 	uint8_t version;
@@ -78,12 +78,12 @@ typedef uint8_t PdsWlMem_t;
 
  typedef union _PdsWl_t
 {
-	struct __packed _WL_Struct
+	struct __attribute__((packed)) _WL_Struct
 	{
 		PdsWlHeader_t pdsWlHeader;
 		PdsWlData_t pdsWlData[PDS_WL_DATA_SIZE];
 	} WL_Struct;
-	struct __packed _WL_Mem
+	struct __attribute__((packed)) _WL_Mem
 	{
 		PdsWlMem_t pdsWlMem[PDS_WL_MEM_SIZE];
 	} WL_Mem;
@@ -96,12 +96,12 @@ typedef uint8_t PdsNvmMem_t;
 
 typedef union _PdsNvm_t
 {
-	struct __packed _NVM_Struct
+	struct __attribute__((packed)) _NVM_Struct
 	{
 		PdsNvmHeader_t pdsNvmHeader;
 		PdsNvmData_t pdsNvmData;
 	} NVM_Struct;
-	struct __packed _NVM_Mem
+	struct __attribute__((packed)) _NVM_Mem
 	{
 		PdsNvmMem_t pdsNvmMem[PDS_NVM_MEM_SIZE];
 	} NVM_Mem;
