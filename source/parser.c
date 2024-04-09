@@ -41,6 +41,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define HW_STR            "ATSAMR34-XPRO"
 #elif defined(BOARD_WLR089U0)
 #define HW_STR            "WLR089U0"
+#elif defined(BOARD_WLR089_CLICK)
+#define HW_STR            "WLR089-CC"
 #else
 #define HW_STR            "USER_BOARD"
 #endif
