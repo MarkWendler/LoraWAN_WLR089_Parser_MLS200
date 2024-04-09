@@ -114,6 +114,8 @@ extern "C" {
 #define LW104   JOIN_NONCE_INCREMENTAL    
  
 #define LWversion      LW104
+#define TestModeEnabled     true    // or false
+    
     
 // ---------- CRYPTO HARDWARE MANIFEST START ----------
 #define WOLFSSL_HAVE_MCHP_HW_CRYPTO_AES_HW_U2238

@@ -355,7 +355,7 @@ StackRetStatus_t LORAWAN_Reset (IsmBand_t ismBand)
       LorawanLinkCheckConfigure (DISABLED); // disable the link check mechanism
     LorawanMcastInit();
     
-    LORAWAN_SetAttr(TEST_MODE_ENABLE, true);
+    LORAWAN_SetAttr(TEST_MODE_ENABLE, TestModeEnabled);
     return status;
 }
 
