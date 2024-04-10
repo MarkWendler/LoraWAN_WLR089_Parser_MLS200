@@ -8,7 +8,7 @@ Target board is WLR089-click board from ChipCAD Ltd. (https://www.chipcad.hu/)
 ![Alt text](resources/wlr089_click_main.png)
 
 1. Download and install [MPLAB® X IDE v6.15 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-x-ide)
-2. Download and install [MPLAB XC32 Compiler v4.21 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
+2. Download and install [MPLAB XC32 Compiler v4.35 tested](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers)
 3. Clone this repo
 4. Connect HW to EDBG-USB (on board programmer/debugger)
 5. Build and Program the device from MPLAB X IDE under **Production -> Make and Program Device**
